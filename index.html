@@ -1,133 +1,248 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>house price prediction</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  </head>
-  <body>
-<!--  navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Home Price</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>House Price Prediction</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg1: #0f172a;   /* slate-900 */
+      --bg2: #1e293b;   /* slate-800 */
+      --card: #0b1220;  /* deep navy */
+      --acc : #6366f1;  /* indigo-500 */
+    }
+    body {
+      min-height: 100vh;
+      background: radial-gradient(1200px 600px at 20% -10%, #1b2350 0%, transparent 60%),
+                  radial-gradient(900px 500px at 110% 10%, #0a3c5a 0%, transparent 60%),
+                  linear-gradient(120deg, var(--bg1), var(--bg2));
+      color: #e5e7eb;
+    }
+    .navbar {
+      background: rgba(2,6,23,.6) !important;
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(99,102,241,.2);
+    }
+    .navbar .nav-link { color:#cbd5e1 !important; }
+  .navbar .nav-link.active, .navbar .nav-link:hover { color:#ffffff !important; }
+
+    .brand-dot { color: var(--acc); }
+    .card-glass {
+      background: linear-gradient(180deg, rgba(30,41,59,.7), rgba(15,23,42,.7));
+      border: 1px solid rgba(99,102,241,.25);
+      border-radius: 18px;
+      box-shadow: 0 8px 40px rgba(0,0,0,.35);
+    }
+    .form-control, .form-select {
+      background-color: #0b1220;
+      border: 1px solid rgba(148,163,184,.25);
+      color: #e5e7eb;
+    }
+    .form-control::placeholder { color: #94a3b8; }
+    .form-label { color: #cbd5e1; }
+    .btn-primary {
+      background: linear-gradient(90deg, #6366f1, #22d3ee);
+      border: none;
+      box-shadow: 0 8px 20px rgba(99,102,241,.35);
+    }
+    .btn-outline-light {
+      border-color: rgba(148,163,184,.35);
+      color: #e5e7eb;
+    }
+    .help {
+      font-size: .85rem; color: #94a3b8;
+    }
+    .pill {
+      display:inline-block; padding:.25rem .6rem; border-radius:999px;
+      background: rgba(99,102,241,.15); color:#c7d2fe; font-size:.8rem;
+      border:1px solid rgba(99,102,241,.3)
+    }
+    .result-card {
+      background: linear-gradient(160deg, rgba(99,102,241,.14), rgba(34,211,238,.10));
+      border: 1px solid rgba(99,102,241,.35);
+      border-radius: 16px;
+    }
+    a.nav-link { color: #cbd5e1 !important; }
+    a.nav-link.active, a.nav-link:hover { color: #fff !important; }
+    /* make numeric inputs nicer on desktop */
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin:0; }
+    input[type=number] { -moz-appearance: textfield; }
+  </style>
+</head>
+<body>
+
+{#<nav class="navbar navbar-expand-lg sticky-top">#}
+{#  <div class="container">#}
+{#    <a class="navbar-brand fw-semibold" href="/">#}
+{#      Home<span class="brand-dot">.</span>Price#}
+{#    </a>#}
+{#    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false">#}
+{#      <span class="navbar-toggler-icon"></span>#}
+{#    </button>#}
+{#    <div id="nav" class="collapse navbar-collapse">#}
+{#      <ul class="navbar-nav ms-auto">#}
+{#        <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>#}
+{#        <li class="nav-item"><a class="nav-link" href="/about">About</a></li>#}
+{#        <li class="nav-item"><a class="nav-link" href="/doc">Documentation</a></li>#}
+{#      </ul>#}
+{#    </div>#}
+{#  </div>#}
+{#</nav>#}
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top"
+     style="background: rgba(2,6,23,.65); backdrop-filter: blur(6px); border-bottom:1px solid rgba(99,102,241,.25);">
+  <div class="container">
+    <a class="navbar-brand fw-semibold" href="/">
+      Home<span style="color:#6366f1">.</span>Price
+    </a>
+
+    <button class="navbar-toggler border-0" type="button"
+            data-bs-toggle="collapse" data-bs-target="#nav"
+            aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span> <!-- will be white because of navbar-dark -->
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/home">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/about">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/doc">Documentation</a>
-        </li>
+
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="/doc">Documentation</a></li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
     </div>
   </div>
 </nav>
 
-<!--  main part-->
-    <h1 class="text-center">Deep Learning Projects</h1>
-    <h1 class="text-center">House Price Prediction using ANN</h1>
+<header class="container py-5 text-center">
+  <span class="pill mb-2">Deep Learning • ANN</span>
+  <h1 class="display-5 fw-semibold mt-2">House Price Prediction</h1>
+  <p class="lead text-secondary">
+    Provide neighborhood features to estimate the median house value.
+  </p>
+</header>
 
-    <div class="container mt-4 my-4" style="background:black; color:white; border-radius:15px;">
-      <h3 class="text-center"> fill all values</h3>
-      <form action="/house" method="post">
-         <div class="row">
-           <div class="col-md-6">
-             <div class="form-group">
-               <label for="text">longitude</label>
-               <input type="text" class="form-control" name="longitude">
-             </div>
-           </div>
-           <div class="col-md-6">
-             <div class="form-group">
-               <label for="text">latitude</label>
-               <input type="text" class="form-control" name="latitude">
-             </div>
-           </div>
-         </div>
+<main class="container pb-5">
+  <div class="row g-4">
+    <div class="col-lg-7">
+      <div class="card card-glass p-4">
+        <h5 class="mb-3">Input Features</h5>
+        <form action="/house" method="post" id="predictForm" novalidate>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Longitude</label>
+              <input type="number" step="0.0001" class="form-control" name="longitude" placeholder="-122.23" required>
+              <div class="help">West is negative (California ≈ -124 to -114)</div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Latitude</label>
+              <input type="number" step="0.0001" class="form-control" name="latitude" placeholder="37.88" required>
+              <div class="help">California ≈ 32 to 42</div>
+            </div>
 
+            <div class="col-md-6">
+              <label class="form-label">Housing Median Age (years)</label>
+              <input type="number" min="0" step="1" class="form-control" name="houseage" placeholder="41" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Total Rooms</label>
+              <input type="number" min="0" step="1" class="form-control" name="houserooms" placeholder="880" required>
+            </div>
 
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="text">house age</label>
-              <input type="text" class="form-control" name="houseage">
+            <div class="col-md-6">
+              <label class="form-label">Total Bedrooms</label>
+              <input type="number" min="0" step="1" class="form-control" name="totlabedrooms" placeholder="129" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Population</label>
+              <input type="number" min="0" step="1" class="form-control" name="population" placeholder="322" required>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Households</label>
+              <input type="number" min="0" step="1" class="form-control" name="households" placeholder="126" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Median Income (× $10,000)</label>
+              <input type="number" min="0" step="0.0001" class="form-control" name="medianincome" placeholder="8.3252" required>
+              <div class="help">Example: 8.3252 → $83,252</div>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label">Ocean Proximity</label>
+              <!-- Use labels that match your OCEAN_MAP keys so the backend maps consistently -->
+              <select class="form-select" name="oceanproximity" required>
+                <option value="" selected disabled>Choose...</option>
+                <option value="INLAND">INLAND</option>
+                <option value="NEAR OCEAN">NEAR OCEAN</option>
+                <option value="NEAR BAY">NEAR BAY</option>
+                <option value="<1H OCEAN">&lt;1H OCEAN</option>
+                <option value="ISLAND">ISLAND</option>
+              </select>
+              <div class="help">These labels map to the model’s encoding on the server.</div>
             </div>
           </div>
 
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="text">house rooms</label>
-              <input type="text" class="form-control" name="houserooms">
-            </div>
+          <div class="d-flex gap-2 mt-4">
+            <button type="submit" class="btn btn-primary px-4" id="submitBtn">
+              <span class="spinner-border spinner-border-sm me-2 d-none" id="busy" role="status" aria-hidden="true"></span>
+              Predict
+            </button>
+            <button type="reset" class="btn btn-outline-light">Reset</button>
+            <button type="button" class="btn btn-outline-light" id="prefill">Prefill Example</button>
           </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="text">total bedrooms</label>
-              <input type="text" class="form-control" name="totlabedrooms">
-            </div>
-          </div>
-
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="text">population</label>
-              <input type="text" class="form-control" name="population">
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="text">house holds</label>
-              <input type="text" class="form-control" name="households">
-            </div>
-          </div>
-
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="text">medianincome</label>
-              <input type="text" class="form-control" name="medianincome">
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="text">ocean_proximity</label>
-              <input type="text" class="form-control" name="oceanproximity" placeholder="1:inland, 2:near ocean, 3: near bay, 4:iland">
-            </div>
-          </div>
-        </div>
-
-
-        <button type="submit" class="btn btn-primary" style="margin-top:5px;margin-bottom:5px; margin-left:40%;width:200px;">predict</button>
-      </form>
-
-
+        </form>
+      </div>
     </div>
-   <div class="container">
-     {% if result %}
-     <h5>Predicted Price</h5> <br>
-      <p>{{result}}</p>
-     {% endif %}
-   </div>
 
+    <div class="col-lg-5">
+      <div class="p-4 result-card h-100">
+        <h5 class="mb-3">Result</h5>
+        {% if result %}
+          <div class="display-6 fw-semibold text-white">{{ result }}</div>
+          <div class="help mt-2">Estimated median house value (USD)</div>
+        {% else %}
+          <p class="text-secondary mb-0">Submit the form to see the predicted price.</p>
+        {% endif %}
+        <hr class="border-secondary my-4">
+        <p class="help mb-1">Tips</p>
+        <ul class="help mb-0">
+          <li>Use realistic values for lat/long and counts.</li>
+          <li><code>median_income</code> is in tens of thousands (8.3 → $83k).</li>
+          <li>Pick the closest ocean proximity label.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  </body>
+<footer class="container py-4 text-center text-secondary">
+  <small>© {{ 2025 }} Home.Price — Demo app</small>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Show a tiny spinner on submit
+  const form = document.getElementById('predictForm');
+  const btn  = document.getElementById('submitBtn');
+  const busy = document.getElementById('busy');
+  form.addEventListener('submit', () => {
+    busy.classList.remove('d-none');
+    btn.setAttribute('disabled', 'disabled');
+  });
+
+  // Prefill with a known-good example (matches your placeholders)
+  document.getElementById('prefill').addEventListener('click', () => {
+    const set = (name, val) => (document.querySelector(`[name="${name}"]`).value = val);
+    set('longitude', '-122.23');
+    set('latitude', '37.88');
+    set('houseage', '41');
+    set('houserooms', '880');
+    set('totlabedrooms', '129');
+    set('population', '322');
+    set('households', '126');
+    set('medianincome', '8.3252');
+    document.querySelector('[name="oceanproximity"]').value = 'INLAND';
+  });
+</script>
+</body>
 </html>

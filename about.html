@@ -1,67 +1,220 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>about</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  </head>
-  <body>
-<!--  navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Home Price</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About • House Price Prediction</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1:#0f172a;         /* slate-900 */
+      --bg2:#1e293b;         /* slate-800 */
+      --card:#0b1220;
+      --acc:#6366f1;         /* indigo-500 */
+      --acc2:#22d3ee;        /* cyan-400 */
+    }
+    body{
+      min-height:100vh;
+      background: radial-gradient(1200px 600px at 20% -10%, #1b2350 0%, transparent 60%),
+                  radial-gradient(900px 500px at 110% 10%, #0a3c5a 0%, transparent 60%),
+                  linear-gradient(120deg, var(--bg1), var(--bg2));
+      color:#e5e7eb;
+    }
+    /* Navbar (matches your Home page style) */
+    .navbar{background:rgba(2,6,23,.65)!important;backdrop-filter:blur(6px);border-bottom:1px solid rgba(99,102,241,.25)}
+    .navbar .nav-link{color:#cbd5e1!important}
+    .navbar .nav-link.active,.navbar .nav-link:hover{color:#fff!important}
+    .brand-dot{color:var(--acc)}
+
+    .pill{display:inline-block;padding:.25rem .6rem;border-radius:999px;background:rgba(99,102,241,.15);color:#c7d2fe;font-size:.8rem;border:1px solid rgba(99,102,241,.3)}
+    .card-glass{
+      background: linear-gradient(180deg, rgba(30,41,59,.7), rgba(15,23,42,.7));
+      border:1px solid rgba(99,102,241,.25);
+      border-radius:18px;
+      box-shadow:0 8px 40px rgba(0,0,0,.35);
+    }
+    .result-card{
+      background: linear-gradient(160deg, rgba(99,102,241,.14), rgba(34,211,238,.10));
+      border:1px solid rgba(99,102,241,.35);
+      border-radius:16px;
+    }
+    .avatar{
+      width:84px;height:84px;border-radius:50%;
+      border:2px solid rgba(99,102,241,.45);object-fit:cover;
+      box-shadow:0 6px 18px rgba(0,0,0,.35);
+    }
+    .badge-soft{
+      background:rgba(34,211,238,.12);
+      border:1px solid rgba(34,211,238,.35);
+      color:#a5f3fc;
+      border-radius:999px;
+      padding:.2rem .6rem;
+      font-size:.75rem;
+    }
+    a{color:#93c5fd}
+    a:hover{color:#bfdbfe}
+    .list-check li{
+      margin:.35rem 0;
+    }
+    .list-check li::marker{color:#94a3b8}
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-semibold" href="/">
+      Home<span class="brand-dot">.</span>Price
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Documentation</a>
-        </li>
+    <div id="nav" class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="/about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="/doc">Documentation</a></li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
     </div>
   </div>
 </nav>
 
-<h3>about me</h3>
-<p>Greetings! I'm [Your Name], a passionate and dedicated Full Stack AI Developer, navigating the ever-evolving landscape of artificial intelligence. With a profound love for coding and a flair for innovation, I've embarked on a journey to harness the power of technology to shape a smarter and more connected world.
-</p> <br>
-<h3>My Journey:</h3>
-<p>My fascination with technology began [X years ago], and since then, I've been on an exhilarating ride through the realms of programming, machine learning, deep learning, and more. From crafting intricate algorithms to developing intelligent systems, every line of code is a step toward a future where AI transforms the ordinary into the extraordinary.</p>
-<h3>Skills Snapshot:</h3>
+<!-- HERO -->
+<header class="container py-5 text-center">
+  <span class="pill mb-2">Team • Green University of Bangladesh</span>
+  <h1 class="display-5 fw-semibold mt-2">About This Project</h1>
+  <p class="lead text-secondary mb-0">
+    A deep learning (ANN) web app that estimates California block-level median house prices from location and demographic features.
+  </p>
+</header>
 
-<p><br>
-  <b>Programming Languages:</b>Proficient in Python, JavaScript, and more. <br>
-<b>Machine Learning:</b> Extensive experience in developing and deploying machine learning models. <br>
-<b>Deep Learning:</b> Adept at creating and optimizing neural networks for various applications. <br>
-<b>Full Stack Development:</b> Bridging the gap between front-end and back-end technologies to deliver seamless user experiences.
-  <br>
-<b>Data Science:</b> Unraveling insights from data to drive informed decision-making. <br>
+<!-- TEAM -->
+<section class="container pb-5">
+  <div class="card-glass p-4 p-md-5">
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-4">
+      <h5 class="mb-0">Project Team</h5>
+      <span class="badge-soft">Department of Computer Science &amp; Engineering</span>
+    </div>
 
-</p> <br>
-<h3>My Philosophy:</h3>
-<p>Driven by a relentless pursuit of excellence, I believe in the power of collaboration and continuous learning. Each project is an opportunity to innovate, and every challenge is a chance to grow. Technology, for me, is not just a tool but a canvas where ideas come to life.
-</p> <br>
-<h3>Let's Connect:</h3>
-Whether you're a fellow developer, an AI enthusiast, or someone curious about the possibilities of technology, I invite you to join me on this exciting journey. Let's connect, collaborate, and build a future where AI enriches lives.
-<br>
-Thank you for stopping by! <br>
+    <p class="text-secondary mb-4">
+      Built by students of <strong>Green University of Bangladesh</strong>, Department of <strong>Computer Science and Engineering</strong>.
+    </p>
 
-[your name]<br>
-Full Stack AI Developer
+    <div class="row g-4">
+      <!-- Member 1 -->
+      <div class="col-md-4">
+        <div class="h-100 p-4 card-glass">
+          <div class="d-flex align-items-center gap-3">
+            <!-- Demo profile pictures — replace with real images in /static if available -->
+            <img class="avatar" src="https://scontent.fdac138-1.fna.fbcdn.net/v/t39.30808-1/464264750_2330636263966913_2946631392401246439_n.jpg?stp=dst-jpg_s160x160_tt6&_nc_cat=100&ccb=1-7&_nc_sid=1d2534&_nc_ohc=ERypNrGhdiEQ7kNvwHKuEA9&_nc_oc=AdnC-3ioMy3xvFEy-mSyCXqOUO2_Ij_dWTewLmeqV3cDBbrxHmgalT82KHd56PTdLL8&_nc_zt=24&_nc_ht=scontent.fdac138-1.fna&_nc_gid=4B01csGlXqL9uRexT0JBDA&oh=00_AfUs8H8gKfLJu6SHKihuZijUEUvKNhCWG7d9hSnJ3KDp9w&oe=68ABDB3D" alt="Profile">
+            <div>
+              <div class="fw-semibold">Md. Rajuan Hossen</div>
+              <div class="text-secondary">ID: 221002100</div>
+              <div class="badge-soft mt-2">Student • CSE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Member 2 -->
+      <div class="col-md-4">
+        <div class="h-100 p-4 card-glass">
+          <div class="d-flex align-items-center gap-3">
+            <img class="avatar" src="https://scontent.fdac138-2.fna.fbcdn.net/v/t39.30808-6/483522925_1658231048414073_6880277072916291263_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=kt6eJSINzz8Q7kNvwHsSjMu&_nc_oc=AdmmqcBV_RPAZhrg6e2r3u9o2YarYLiwHAR8jXj4fdp3g_CCK0E9TFgWzlgTxmkSRNI&_nc_zt=23&_nc_ht=scontent.fdac138-2.fna&_nc_gid=JUAvJ5OYJd5Vhm34VX5Jng&oh=00_AfXEnxemPg373W5hImubCYvZ2rr51GC2PUiMaNBa2bej6g&oe=68ABDF02" alt="Profile">
+            <div>
+              <div class="fw-semibold">Md. Sagor Howlader</div>
+              <div class="text-secondary">ID: 221002102</div>
+              <div class="badge-soft mt-2">Student • CSE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Member 3 -->
+      <div class="col-md-4">
+        <div class="h-100 p-4 card-glass">
+          <div class="d-flex align-items-center gap-3">
+            <img class="avatar" src="https://scontent.fdac138-2.fna.fbcdn.net/v/t39.30808-6/506613505_2328186910916465_4943130540631068522_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=03vLIMrVZ2QQ7kNvwEmaTp4&_nc_oc=AdkjO5MCyUSKOp51g_KvzyLGuoU8cY-UJRovfnVYynys03eP7C7OfZZauXGSAB18Uz8&_nc_zt=23&_nc_ht=scontent.fdac138-2.fna&_nc_gid=bLHVIZttmtj7UTPESqjdSw&oh=00_AfUmkV4XIJKR9d4Bp_UinvY2nGVCrPE-FsElSxe8_zGA_g&oe=68ABD439" alt="Profile">
+            <div>
+              <div class="fw-semibold">Mahmudul Hasan Soad</div>
+              <div class="text-secondary">ID: 221902250</div>
+              <div class="badge-soft mt-2">Student • CSE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+  </div>
+</section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  </body>
+<!-- PROJECT OVERVIEW -->
+<section class="container pb-5">
+  <div class="row g-4">
+    <div class="col-lg-7">
+      <div class="card-glass p-4 h-100">
+        <h5 class="mb-3">Project Overview</h5>
+        <p class="text-secondary">
+          This application predicts the <strong>median house value</strong> for a California block-group using a
+          <strong>feed-forward Artificial Neural Network (ANN)</strong>. Inputs include geographic coordinates and
+          housing/demographic attributes (e.g., rooms, households, population, median income, and ocean proximity).
+        </p>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <ul class="list-unstyled list-check">
+              <li>Framework: <strong>Flask</strong> (Python)</li>
+              <li>Model: <strong>Keras/TensorFlow</strong> ANN</li>
+              <li>Preprocessing: <strong>MinMaxScaler</strong></li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ul class="list-unstyled list-check">
+              <li>Artifacts: <code>model_ann.h5</code>, <code>scaler.pkl</code></li>
+              <li>UI: <strong>Bootstrap 5</strong>, responsive</li>
+              <li>Serving: Local Flask server</li>
+            </ul>
+          </div>
+        </div>
+        <hr class="border-secondary">
+        <h6 class="mb-2">How It Works</h6>
+        <ol class="text-secondary ps-3">
+          <li>User enters features on the form (Home page).</li>
+          <li>Server scales inputs with the trained <code>MinMaxScaler</code>.</li>
+          <li>ANN predicts price; the result is rendered back to the UI.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="col-lg-5">
+      <div class="p-4 result-card h-100">
+        <h5 class="mb-3">Model &amp; Data</h5>
+        <p class="text-secondary">
+          Trained on the well-known <em>California Housing</em> dataset (block-group level). Key features:
+          <code>longitude</code>, <code>latitude</code>, <code>housing_median_age</code>, <code>total_rooms</code>,
+          <code>total_bedrooms</code>, <code>population</code>, <code>households</code>,
+          <code>median_income</code> (×$10k), and <code>ocean_proximity</code>.
+        </p>
+        <ul class="text-secondary">
+          <li>Loss: Mean Squared Error (MSE)</li>
+          <li>Metrics: MAE / R² (in notebook)</li>
+          <li>Encoder: numeric map for <code>ocean_proximity</code></li>
+        </ul>
+        <hr class="border-secondary">
+        <h6 class="mb-2">Limitations</h6>
+        <ul class="text-secondary">
+          <li>Predictions are illustrative; not for financial advice.</li>
+          <li>Generalization is bound to training data distribution.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="container py-4 text-center text-secondary">
+  <small>© 2025 Green University of Bangladesh • CSE • House Price Prediction (ANN)</small>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

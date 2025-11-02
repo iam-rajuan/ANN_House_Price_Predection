@@ -39,3 +39,8 @@ The model is evaluated using various metrics such as Mean Absolute Error (MAE), 
 6. Web Application using Flask
 
 A Flask web application has been created to provide a user-friendly interface for predicting house prices. The application loads the pre-trained neural network model and scaler. Users can input information such as longitude, latitude, house age, and other details to get a predicted house price.
+
+
+7. How to run th Project
+.venv\Scripts\activate
+python app.py

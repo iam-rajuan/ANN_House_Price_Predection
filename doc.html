@@ -1,81 +1,175 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>about</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  </head>
-  <body>
-<!--  navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Home Price</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Documentation • House Price Prediction</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1:#0f172a;         /* slate-900 */
+      --bg2:#1e293b;         /* slate-800 */
+      --card:#0b1220;
+      --acc:#6366f1;         /* indigo-500 */
+      --acc2:#22d3ee;        /* cyan-400 */
+    }
+    body{
+      min-height:100vh;
+      background: radial-gradient(1200px 600px at 20% -10%, #1b2350 0%, transparent 60%),
+                  radial-gradient(900px 500px at 110% 10%, #0a3c5a 0%, transparent 60%),
+                  linear-gradient(120deg, var(--bg1), var(--bg2));
+      color:#e5e7eb;
+    }
+    /* Navbar (matches the Home page) */
+    .navbar{background:rgba(2,6,23,.65)!important;backdrop-filter:blur(6px);border-bottom:1px solid rgba(99,102,241,.25)}
+    .navbar .nav-link{color:#cbd5e1!important}
+    .navbar .nav-link.active,.navbar .nav-link:hover{color:#fff!important}
+    .brand-dot{color:var(--acc)}
+
+    .pill{display:inline-block;padding:.25rem .6rem;border-radius:999px;background:rgba(99,102,241,.15);color:#c7d2fe;font-size:.8rem;border:1px solid rgba(99,102,241,.3)}
+    .card-glass{
+      background: linear-gradient(180deg, rgba(30,41,59,.7), rgba(15,23,42,.7));
+      border:1px solid rgba(99,102,241,.25);
+      border-radius:18px;
+      box-shadow:0 8px 40px rgba(0,0,0,.35);
+    }
+    .toc{
+      position: sticky; top: 88px;
+      background: linear-gradient(180deg, rgba(30,41,59,.55), rgba(15,23,42,.55));
+      border:1px solid rgba(148,163,184,.25);
+      border-radius:14px; padding:1rem;
+    }
+    .toc a{ color:#cbd5e1; text-decoration:none; display:block; padding:.35rem .5rem; border-radius:8px; }
+    .toc a:hover{ background: rgba(99,102,241,.15); color:#fff; }
+    .doc-section h3{ margin-top: .25rem; }
+    .doc-section .lead{ color:#a1a9b8; }
+    .doc-section ul, .doc-section ol { color:#c7ceda; }
+    .doc-section code { color:#c7d2fe; }
+    .divider { border-color: rgba(148,163,184,.25)!important; }
+    .footer-note{ color:#94a3b8; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-semibold" href="/">
+      Home<span class="brand-dot">.</span>Price
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Documentation</a>
-        </li>
+    <div id="nav" class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+        <li class="nav-item"><a class="nav-link active" href="/doc">Documentation</a></li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
     </div>
   </div>
 </nav>
 
-<h3>House Price Prediction System Documentation</h3> <br>
-<p>Table of Contents</p> br
-<ul>
-  <li>Introduction</li>
-  <li>Data Preprocessing</li>
-<li>  Neural Network Architecture</li>
-<li>  Model Training</li>
-  <li>Model Evaluation</li>
-<li>Web Application using Flask</li>
-  <li>Documentation for Flask App</li>
-</ul>
+<!-- HERO -->
+<header class="container py-5 text-center">
+  <span class="pill mb-2">Developer Docs</span>
+  <h1 class="display-6 fw-semibold mt-2">House Price Prediction System Documentation</h1>
+  <p class="lead mb-0">A concise reference for data, model, and Flask integration.</p>
+</header>
 
-<h3>1. Introduction</h3> <br>
-<p>The House Price Prediction System is designed to predict house prices based on various features like location, room details, and other amenities. The system utilizes a neural network model implemented using the Keras framework. Additionally, a Flask web application has been developed to provide an intuitive interface for users to input data and receive price predictions.
-</p> <br>
-<h3>2. Data Preprocessing</h3>
-<p>Data Scaling: Features are scaled using the Min-Max Scaler from scikit-learn to ensure consistent input to the neural network.
-  <br>
-Data Splitting: The dataset is split into training and testing sets to evaluate the model's performance accurately.</p>
-<h3>3. Neural Network Architecture</h3>
-<p>The neural network architecture consists of an input layer, two hidden layers with dropout for regularization, and an output layer for regression.
-</p>
+<!-- CONTENT -->
+<main class="container pb-5">
+  <div class="row g-4">
+    <!-- TOC -->
+    <aside class="col-lg-3">
+      <nav class="toc">
+        <div class="fw-semibold mb-2">Table of Contents</div>
+        <a href="#intro">1. Introduction</a>
+        <a href="#preprocess">2. Data Preprocessing</a>
+        <a href="#arch">3. Neural Network Architecture</a>
+        <a href="#train">4. Model Training</a>
+        <a href="#eval">5. Model Evaluation</a>
+        <a href="#flask">6. Web Application using Flask</a>
+        <a href="#flask-doc">Documentation for Flask App</a>
+      </nav>
+    </aside>
 
-<ul>
-<li>  Input Layer: 1000 neurons, ReLU activation</li>
-  <li>Dropout Layer: 20% dropout rate</li>
-  <li>Hidden Layer 1: 500 neurons, ReLU activation</li>
-  <li>  Dropout Layer: 20% dropout rate</li>
-  <li>Hidden Layer 2: 250 neurons, ReLU activation</li>
-<li>Output Layer: 1 neuron, linear activation for regression</li>
-</ul>
+    <!-- SECTIONS -->
+    <section class="col-lg-9">
+      <div class="card-glass p-4 doc-section mb-4" id="intro">
+        <h3>1. Introduction</h3>
+        <p>
+          The House Price Prediction System is designed to predict house prices based on various features like
+          location, room details, and other amenities. The system utilizes a neural network model implemented using
+          the Keras framework. Additionally, a Flask web application has been developed to provide an intuitive
+          interface for users to input data and receive price predictions.
+        </p>
+      </div>
 
-<h3>4. Model Training</h3> <br>
-<p>The model is compiled using the RMSprop optimizer and Mean Squared Error loss function. Early stopping is implemented with a patience of 50 epochs to prevent overfitting. The training is performed for 10 epochs with a batch size of 50.</p>
-<h3>5. Model Evaluation</h3> <br>
-<p>The model is evaluated using various metrics such as Mean Absolute Error (MAE), Mean Squared Error (MSE), Mean Squared Log Error (MSLE), and R-squared score on the testing dataset.
-</p>
-<h3>6. Web Application using Flask</h3> <br>
-<p>A Flask web application has been created to provide a user-friendly interface for predicting house prices. The application loads the pre-trained neural network model and scaler. Users can input information such as longitude, latitude, house age, and other details to get a predicted house price.
-</p>
+      <div class="card-glass p-4 doc-section mb-4" id="preprocess">
+        <h3>2. Data Preprocessing</h3>
+        <ul class="mb-0">
+          <li><strong>Data Scaling:</strong> Features are scaled using the Min-Max Scaler from scikit-learn to ensure consistent input to the neural network.</li>
+          <li><strong>Data Splitting:</strong> The dataset is split into training and testing sets to evaluate the model's performance accurately.</li>
+        </ul>
+      </div>
 
+      <div class="card-glass p-4 doc-section mb-4" id="arch">
+        <h3>3. Neural Network Architecture</h3>
+        <p>The neural network architecture consists of an input layer, two hidden layers with dropout for regularization, and an output layer for regression.</p>
+        <ul class="mb-0">
+          <li>Input Layer: 1000 neurons, ReLU activation</li>
+          <li>Dropout Layer: 20% dropout rate</li>
+          <li>Hidden Layer 1: 500 neurons, ReLU activation</li>
+          <li>Dropout Layer: 20% dropout rate</li>
+          <li>Hidden Layer 2: 250 neurons, ReLU activation</li>
+          <li>Output Layer: 1 neuron, linear activation for regression</li>
+        </ul>
+      </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  </body>
+      <div class="card-glass p-4 doc-section mb-4" id="train">
+        <h3>4. Model Training</h3>
+        <p class="mb-0">
+          The model is compiled using the RMSprop optimizer and Mean Squared Error loss function. Early stopping is
+          implemented with a patience of 50 epochs to prevent overfitting. The training is performed for 10 epochs
+          with a batch size of 50.
+        </p>
+      </div>
+
+      <div class="card-glass p-4 doc-section mb-4" id="eval">
+        <h3>5. Model Evaluation</h3>
+        <p class="mb-0">
+          The model is evaluated using various metrics such as Mean Absolute Error (MAE), Mean Squared Error (MSE),
+          Mean Squared Log Error (MSLE), and R-squared score on the testing dataset.
+        </p>
+      </div>
+
+      <div class="card-glass p-4 doc-section mb-4" id="flask">
+        <h3>6. Web Application using Flask</h3>
+        <p class="mb-0">
+          A Flask web application has been created to provide a user-friendly interface for predicting house prices.
+          The application loads the pre-trained neural network model and scaler. Users can input information such as
+          longitude, latitude, house age, and other details to get a predicted house price.
+        </p>
+      </div>
+
+      <div class="card-glass p-4 doc-section" id="flask-doc">
+        <h3>Documentation for Flask App</h3>
+        <p class="mb-0">
+          The Flask layer exposes routes for rendering the input form and receiving POSTed feature values. Inputs
+          are scaled using the stored <code>MinMaxScaler</code>, passed to the ANN for inference, and the predicted
+          value is returned to the UI.
+        </p>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="container py-4 text-center footer-note">
+  <small>© 2025 House Price Prediction (ANN) — Documentation</small>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
