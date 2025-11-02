@@ -1,7 +1,3 @@
-Perfect ✅ — here’s your **final, polished `README.md`**, now including a well-organized **`requirements.txt` section** at the end. This version is formatted cleanly for GitHub and ready for direct use.
-
----
-
 # 🏠 House Price Prediction Using Deep Learning (ANN)
 
 ## 🚀 How to Run the Project
@@ -210,10 +206,6 @@ pip install -r requirements.txt
 ### 🏁 Conclusion
 
 This project demonstrates a complete **Deep Learning Regression Pipeline**, from data preprocessing and training to deployment as a **Flask web app**. It showcases how neural networks can effectively predict house prices and serve as a robust model deployment example.
-
----
-
-Would you like me to make a **ready-to-use `requirements.txt` file** (you can download directly) with the above dependencies?
 
 
 
